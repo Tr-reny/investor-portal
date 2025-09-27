@@ -1,0 +1,4 @@
+'use client';
+import React,{useState} from 'react'; import Link from 'next/link';
+export default function AdminReports(){ const [period,setPeriod]=useState('YTD'); const openPDF=()=>{ window.open(process.env.NEXT_PUBLIC_API_URL+`/statements/pdf?period=${encodeURIComponent(period)}`,'_blank'); };
+return(<main className="max-w-3xl mx-auto p-6 space-y-4"><div className="flex items-center justify-between"><h1 className="text-2xl font-semibold">Reports & Statements</h1><Link className="btn" href="/admin/dashboard">Back</Link></div><div className="card"><div className="card-header">Generate Statement PDF</div><div className="card-content space-y-2"><input className="input" value={period} onChange={e=>setPeriod(e.target.value)} placeholder="e.g. 2025 Q3 or YTD" /><button className="btn btn-primary" onClick={openPDF}>Open PDF</button></div></div></main>); }

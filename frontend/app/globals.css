@@ -1,0 +1,7 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+:root { color-scheme: light; } body { @apply bg-neutral-50 text-neutral-900; }
+.card { @apply bg-white border rounded-2xl shadow-sm; } .card-header { @apply border-b px-4 py-3 text-sm font-medium text-neutral-600; } .card-content { @apply p-4; }
+.btn { @apply inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-sm; } .btn-primary { @apply bg-neutral-900 text-white border-neutral-900; }
+.badge { @apply inline-flex items-center rounded-full border px-2 py-0.5 text-xs; } .input { @apply border rounded-xl px-3 py-2; }
+.table { @apply w-full text-sm; } .table th { @apply text-left font-medium text-neutral-600 border-b py-2; } .table td { @apply border-b py-2; }
+.grid-kpis { @apply grid grid-cols-2 md:grid-cols-4 gap-4; } .sidenav-btn { @apply text-left w-full px-3 py-2 rounded-xl hover:bg-neutral-100; }

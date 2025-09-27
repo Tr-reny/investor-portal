@@ -1,0 +1,6 @@
+'use client';
+import React,{useState} from 'react'; import { api } from '@/lib/api';
+export default function Security(){ const [qr,setQr]=useState(''); const [code,setCode]=useState(''); const [enabled,setEnabled]=useState(false);
+const setup=async()=>{ const r=await api.post('/auth/2fa/setup',{}); setQr(r.qr); };
+const enable=async()=>{ const r=await api.post('/auth/2fa/enable',{token:code}); setEnabled(r.ok); if(!r.ok) alert('Invalid code'); };
+return(<main className="max-w-md mx-auto p-6 space-y-4"><h1 className="text-2xl font-semibold">Security – 2FA</h1><button className="btn btn-primary" onClick={setup}>Generate 2FA Secret</button>{qr && (<div><img src={qr} alt="2FA QR"/><div className="mt-2 flex gap-2"><input className="input" placeholder="6-digit code" value={code} onChange={e=>setCode(e.target.value)} /><button className="btn btn-primary" onClick={enable}>Enable</button></div></div>)}{enabled && <div className="text-green-700">Two-factor authentication enabled.</div>}</main>); }

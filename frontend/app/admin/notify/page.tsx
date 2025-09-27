@@ -1,0 +1,4 @@
+'use client';
+import React,{useState} from 'react'; import { api } from '@/lib/api'; import Link from 'next/link';
+export default function AdminNotify(){ const [message,setMessage]=useState('Hello investors!'); const send=async()=>{ await api.post('/admin/notify',{message}); alert('Notification sent.'); };
+return(<main className="max-w-3xl mx-auto p-6 space-y-4"><div className="flex items-center justify-between"><h1 className="text-2xl font-semibold">Broadcast Notification</h1><Link className="btn" href="/admin/dashboard">Back</Link></div><div className="card"><div className="card-header">Compose</div><div className="card-content space-y-2"><textarea className="input w-full" rows={4} value={message} onChange={e=>setMessage(e.target.value)} /><button className="btn btn-primary" onClick={send}>Send</button></div></div></main>); }

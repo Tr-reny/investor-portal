@@ -1,0 +1,4 @@
+'use client';
+import React,{useEffect,useState} from 'react'; import { api } from '@/lib/api';
+export default function Notifications(){ const [items,setItems]=useState<any[]>([]); useEffect(()=>{ api.get('/notifications').then(setItems); },[]);
+return(<main className="max-w-3xl mx-auto p-6 space-y-4"><h1 className="text-2xl font-semibold">Notifications</h1><div className="card"><div className="card-header">Latest</div><div className="card-content"><ul className="space-y-2">{items.map(n=>(<li key={n.id} className="border rounded-xl px-3 py-2">{new Date(n.createdAt).toLocaleString()} — {n.message}</li>))}</ul></div></div></main>); }
